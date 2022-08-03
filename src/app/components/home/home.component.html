@@ -1,0 +1,12 @@
+<div class="container-fluid"> 
+    <div class="container bg-light shadow rounded-4 p-2 col-sm-12 col-md-10 col-xl-8 col-lg-7" >
+       <h1 class="h1 icono" >A la carta</h1>
+       <h5 class="text-center text-muted">Menú</h5> 
+       <button class="btn btn-sm m-1 rounded-circle btn-info">
+            <i class="fas fa-plus" style="color:rgba(255, 255, 255, 0.986);"></i>
+       </button>
+       <div class="row row-cols-1 row-cols-md-2 g-2 ">
+           <app-plato *ngFor="let item of items"></app-plato>
+       </div>
+    </div>
+</div>

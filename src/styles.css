@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+.letra{
+    font-family: 'Mouse Memoirs', sans-serif;
+    font-size: larger;
+}
+.fuente{
+    font-family: 'Poppins', sans-serif;
+}
+.icono{
+    /* color: red; */
+    text-shadow: -1px 2px 0 #0cbdee, -1px 2px 0 #152cc7;
+    color: #c86400;
+    border-top:solid 3px  rgb(228, 60, 240);
+    border-bottom:solid 3px  rgb(228, 60, 240);
+}
+.btn-morado{
+    color: white;
+    background-color: rgba(140, 0, 255, 0.913);
+}
+.btn-verde{
+    color: white;
+    background-color: rgba(0, 212, 0, 0.86);
+}
+.btn-morado:hover, .btn-verde:hover{
+    box-shadow:1px 1px 6px 1px rgba(0, 0, 0, 0.2);
+}
