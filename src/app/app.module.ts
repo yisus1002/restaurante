@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ROUTES } from './app.routes';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PlatoComponent } from './components/plato/plato.component';
+import { AvatarComponent } from './components/avatar/avatar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PlatoComponent } from './components/plato/plato.component';
     HomeComponent,
     LoguinComponent,
     NavbarComponent,
-    PlatoComponent
+    PlatoComponent,
+    AvatarComponent
   ],
   imports: [
     BrowserModule,
