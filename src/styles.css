@@ -16,11 +16,27 @@
 .btn-morado{
     color: white;
     background-color: rgba(140, 0, 255, 0.913);
+    border: none;
+    box-shadow:1px 1px 2px 1px rgba(140, 0, 255, 0.913);
 }
 .btn-verde{
     color: white;
     background-color: rgba(0, 212, 0, 0.86);
+    border: none;
+    box-shadow:1px 1px 2px 1px rgba(0, 212, 0, 0.86);
 }
-.btn-morado:hover, .btn-verde:hover{
-    box-shadow:1px 1px 6px 1px rgba(0, 0, 0, 0.2);
+
+.btn-morado:active{
+    box-shadow:1px 1px 6px 1px rgba(140, 0, 255, 0.913)!important;
+}
+.btn-morado:focus{
+    box-shadow:1px 1px 6px 1px rgba(140, 0, 255, 0.913)!important;
+
+}
+.btn-verde:active{
+    box-shadow:1px 1px 6px 1px rgba(0, 212, 0, 0.86)!important;
+}
+.btn-verde:focus{
+    box-shadow:1px 1px 6px 1px rgba(0, 212, 0, 0.86)!important;
+
 }
