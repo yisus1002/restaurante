@@ -11,9 +11,9 @@
       <form>
         <input type="email" required id="email" class="fadeIn second" name="email" placeholder="Email">
         <div  class="d-flex contra" style="margin:5px  auto; justify-content: space-between;">
-            <input type="password" required id="password" class="fadeIn third" name="login" placeholder="password">
+            <input [type]="tipo" pattern=".{6,}" required id="password" class="fadeIn third" name="login" placeholder="password">
             <div  class="d-flex">
-                <button type="button" (click)="mostrar=!mostrar"class="btn btn-sm border-0">
+                <button type="button" (click)="ver()"class="btn btn-sm border-0">
                     <i *ngIf="mostrar==false" class="fas fa-eye"></i>
                     <i *ngIf="mostrar==true" class="fas fa-eye-slash"></i>
                 </button>

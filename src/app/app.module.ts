@@ -24,7 +24,7 @@ import { AvatarComponent } from './components/avatar/avatar.component';
     LoguinComponent,
     NavbarComponent,
     PlatoComponent,
-    AvatarComponent
+    AvatarComponent, 
   ],
   imports: [
     BrowserModule,

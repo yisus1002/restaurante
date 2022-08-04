@@ -104,7 +104,7 @@ a {
     transform: scale(0.95);
   }
   
-  input[type=email], input[type=password],  .contra {
+  input[type=email], input[type=password], input[type=text], .contra {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
@@ -132,12 +132,13 @@ a {
     /* border-radius: 0; */
     /* -webkit-border-radius: 0; */
   }
-  input[type=password]{
+  input[type=password], input[type=text]{
     margin: 0;
     width: 100%;
   }
+
   
-  input[type=email]:focus, input[type=password]:focus, .contra:focus{
+  input[type=email]:focus, input[type=password]:focus, input[type=text]:focus, .contra:focus{
     background-color: #fff;
     border-bottom: 2px solid #5fbae9;
   }
