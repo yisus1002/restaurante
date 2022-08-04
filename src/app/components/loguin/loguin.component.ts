@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./loguin.component.css']
 })
 export class LoguinComponent implements OnInit {
-
+  mostrar:boolean=false;
   constructor() { }
 
   ngOnInit(): void {

@@ -1,1 +1,31 @@
-<p>loguin works!</p>
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+  
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <p class="navbar-brand pt-4" ><span class="icono h1">A la carta</span></p>
+      </div>
+  
+      <!-- Login Form -->
+      <form>
+        <input type="email" required id="email" class="fadeIn second" name="email" placeholder="Email">
+        <div  class="d-flex contra" style="margin:5px  auto; justify-content: space-between;">
+            <input type="password" required id="password" class="fadeIn third" name="login" placeholder="password">
+            <div  class="d-flex">
+                <button type="button" (click)="mostrar=!mostrar"class="btn btn-sm border-0">
+                    <i *ngIf="mostrar==false" class="fas fa-eye"></i>
+                    <i *ngIf="mostrar==true" class="fas fa-eye-slash"></i>
+                </button>
+            </div>
+        </div>
+        <input type="submit" class="fadeIn fourth" value="Enviar">
+      </form>
+  
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="#">¿Has olvidado tu contraseña?</a>
+      </div>
+  
+    </div>
+  </div>
