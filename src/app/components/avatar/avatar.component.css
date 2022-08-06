@@ -4,3 +4,8 @@
     /* border: solid 1px red; */
     border-radius: 100%;
 }
+.bg{
+    border: none;
+    background: rgb(98,92,203);
+background: linear-gradient(30deg, rgba(98,92,203,1) 25%, rgba(14,185,149,1) 52%, rgba(14,185,149,1) 56%, rgba(0,228,255,1) 78%);
+}
