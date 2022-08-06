@@ -21,6 +21,7 @@ import { ROUTES } from './app.routes';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PlatoComponent } from './components/plato/plato.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
+import { JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,15 @@ import { AvatarComponent } from './components/avatar/avatar.component';
     RouterModule.forRoot(ROUTES , {useHash: true}),
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        // ...
+        tokenGetter: () => {
+          return localStorage.getItem("token");
+        },
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
