@@ -20,7 +20,7 @@ export class LoguinComponent implements OnInit {
   }
   createForm() {
     this.angForm = this.fb.group({
-      email: ["",[ Validators.required]],
+      email: ["",[ Validators.required, Validators.email]],
       password: ["", [Validators.required, Validators.minLength(4)]],
     });
     this.angForm.controls["email"].valueChanges.subscribe(data => {
@@ -34,7 +34,14 @@ export class LoguinComponent implements OnInit {
       console.log(this.angForm.value);
       this.auth.postuser()
     } else {
-      alert("Campos invalidos");
+      if(this.angForm.controls['password'].value==="" && this.angForm.controls['email'].value===''){
+        this.angForm.controls['password'].markAsTouched();
+        this.angForm.controls['email'].markAsTouched();
+      }else if(this.angForm.controls['email'].value===''){
+        this.angForm.controls['email'].markAsTouched();
+      }else{
+        this.angForm.controls['password'].markAsTouched();
+      }
     }
   }
   ver(){

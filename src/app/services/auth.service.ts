@@ -1,6 +1,7 @@
 import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -32,9 +33,22 @@ export class AuthService {
       alert('campos vacios')
     }else{
       console.log(this.credential)
-      this.postauth().subscribe((user:any)=>{
-        console.log(user)
-      })
+      this.postauth().subscribe({
+        
+        next: (response)=>{
+          console.log(response)
+          
+        },
+        error: (error)=>{
+          Swal.fire({
+            title: 'Error!',
+            text: 'No se logro acceder',
+            icon: 'error',
+            confirmButtonText: 'Cool'
+          })
+        }
+      }
+        )
     }
   }
 }
