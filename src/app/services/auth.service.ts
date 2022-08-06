@@ -73,7 +73,7 @@ export class AuthService {
         }
       }
         )
-    }
+      }
   }
   public isAuthenticated(): boolean {
     const token = localStorage.getItem('token');
@@ -81,6 +81,25 @@ export class AuthService {
     // true or false
     return !this.jwtHelper.isTokenExpired(token!);
   }
+  public logOut(){
+    this.router.navigate(['home'])
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Cerrando sesion!',
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen:()=>{
+        Swal.showLoading();
+      }
+    }).then(()=>{
+      localStorage.clear();
+      window.location.reload(); 
 
+    })
+    
+  }
+  
 }
 
