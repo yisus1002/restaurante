@@ -10,6 +10,11 @@ import {  RouterModule } from '@angular/router';
 //Haccer peticiones 
 import { HttpClientModule } from '@angular/common/http';
 
+// para trabajar con formularios
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from "@angular/forms"; // <---
+
+
 
 //Importar rutas
 import { ROUTES } from './app.routes';
@@ -31,6 +36,8 @@ import { AvatarComponent } from './components/avatar/avatar.component';
     AppRoutingModule,
     RouterModule.forRoot(ROUTES , {useHash: true}),
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

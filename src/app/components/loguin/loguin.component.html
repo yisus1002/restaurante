@@ -8,10 +8,20 @@
       </div>
   
       <!-- Login Form -->
-      <form>
-        <input type="email" required id="email" class="fadeIn second" name="email" placeholder="Email">
+      <form action="" [formGroup]="angForm" (ngSubmit)="enviar()" novalidate>
+        <div class="text-danger" *ngIf="  angForm.controls['email'].invalid && (angForm.controls['email'].dirty || angForm.controls['email'].touched) ">
+          <div *ngIf="angForm.controls['email'].errors">
+            Email is required.
+          </div>
+        </div>
+        <input type="email" required id="email" class="fadeIn second" name="email" placeholder="Email" formControlName="email" >
+        <div class="text-danger" *ngIf="  angForm.controls['password'].invalid && (angForm.controls['password'].dirty || angForm.controls['password'].touched) ">
+          <div *ngIf="angForm.controls['password'].errors">
+            Password is required.
+          </div>
+        </div>
         <div  class="d-flex contra" style="margin:5px  auto; justify-content: space-between;">
-            <input [type]="tipo" pattern=".{6,}" required id="password" class="fadeIn third" name="login" placeholder="password">
+            <input [type]="tipo" pattern=".{4,}" required id="password" class="fadeIn third" name="login" placeholder="password" formControlName="password"  >
             <div  class="d-flex">
                 <button type="button" (click)="ver()"class="btn btn-sm border-0">
                     <i *ngIf="mostrar==false" class="fas fa-eye"></i>
@@ -19,9 +29,9 @@
                 </button>
             </div>
         </div>
-        <input type="submit" class="fadeIn fourth" value="Enviar">
-      </form>
-  
+        <!-- {{auth.credential | json}} -->
+        <input  type="submit" class="fadeIn fourth"  value="Enviar">
+      </form> 
       <!-- Remind Passowrd -->
       <div id="formFooter">
         <a class="underlineHover" href="#">¿Has olvidado tu contraseña?</a>
