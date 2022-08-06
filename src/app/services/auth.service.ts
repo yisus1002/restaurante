@@ -1,5 +1,7 @@
 import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { map, Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 
@@ -15,6 +17,8 @@ export class AuthService {
   estado:boolean=false
 
   constructor(private http: HttpClient,
+    public jwtHelper: JwtHelperService,
+    public router: Router,
     
               ) { 
     console.log('Servicio listo')
@@ -57,5 +61,12 @@ export class AuthService {
         )
     }
   }
+  public isAuthenticated(): boolean {
+    const token = localStorage.getItem('token');
+    // Check whether the token is expired and return
+    // true or false
+    return !this.jwtHelper.isTokenExpired(token!);
+  }
+
 }
 
