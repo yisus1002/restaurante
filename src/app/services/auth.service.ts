@@ -12,8 +12,10 @@ export class AuthService {
     email:'',
     password:'',
   }
+  estado:boolean=false
 
   constructor(private http: HttpClient,
+    
               ) { 
     console.log('Servicio listo')
   }
@@ -29,6 +31,7 @@ export class AuthService {
   }
 
   public postuser(){
+    this.estado=true;
     if(this.credential['password']===""|| this.credential['email']===""){
       alert('campos vacios')
     }else{
@@ -37,9 +40,12 @@ export class AuthService {
         
         next: (response)=>{
           console.log(response)
+          this.estado=false
+          localStorage.setItem('token', JSON.stringify(response.token))
           
         },
         error: (error)=>{
+          this.estado=false
           Swal.fire({
             title: 'Error!',
             text: 'No se logro acceder',
