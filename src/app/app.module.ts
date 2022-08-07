@@ -35,7 +35,7 @@ import { JwtModule } from '@auth0/angular-jwt';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(ROUTES , {useHash: true}),
+    RouterModule.forRoot(ROUTES),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
