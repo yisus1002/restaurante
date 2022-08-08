@@ -5,30 +5,30 @@
        <button class="btn btn-sm m-1 rounded-circle btn-info"  data-bs-toggle="modal" data-bs-target="#exampleModal">
             <i class="fas fa-plus" style="color:rgba(255, 255, 255, 0.986);"></i>
        </button>
-       <div class="row row-cols-1 row-cols-md-2 g-2 ">
-           <app-plato *ngFor="let item of items"></app-plato>
+       <div class="col">
+           <app-plato class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-2 g-1"  [items]="bus.menu"></app-plato>
        </div>
     </div>
 </div>
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-scrollable modal-xl">
       <div class="modal-content p-2">
         <div class="modal-header d-block py-1 my-0" style="border-bottom: 0;">
             <div class="d-flex" >
                 <h5>Agregar </h5>
-                <button type="button" class="btn-close border-0 " data-bs-dismiss="modal" aria-label="Close"></button>      
+                <button type="button" class="btn-close border-0 " data-bs-dismiss="modal" (click)="limpiar()" aria-label="Close"></button>      
             </div>
             <div class="  d-flex form-control col border border-1 border-info ">
-                <form class="DocSearch-Form d-flex col ">
+                <form  class="DocSearch-Form d-flex col " [formGroup]="angForm" (keyup)="buscar(termino.value)" novalidate>
                     <label class="DocSearch-MagnifierLabel" for="docsearch-input" id="docsearch-label">
                         <svg width="20" height="20" class="" style="color: rgb(170, 17, 240); " viewBox="0 0 20 20">
                             <path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
                             </path>
                     </svg>
-                </label>
-                <div class="loading" style="width: 20px; height: 20px;" >
+                </label> 
+                <div class="loading" *ngIf="bus.loading" style="width: 20px; height: 20px;" >
                     <svg viewBox="0 0 38 38" style="color: rgb(170, 17, 240); " stroke="currentColor" stroke-opacity=".5">
                         <g fill="none" fill-rule="evenodd">
                             <g transform="translate(1 1)" stroke-width="2">
@@ -39,20 +39,16 @@
                             </g></g>
                         </svg>
                     </div>
-                    <input class="col mx-1" style="border: none; outline:none;" aria-autocomplete="both" aria-labelledby="docsearch-label" id="buscar" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Buscar platos" maxlength="64" type="search">
-                    <button type="reset" title="Clear the query" class="DocSearch-Reset" aria-label="Clear the query" hidden="">
-                        <svg width="20" height="20" viewBox="0 0 20 20">
-                            <path d="M10 10l5.09-5.09L10 10l5.09 5.09L10 10zm0 0L4.91 4.91 10 10l-5.09 5.09L10 10z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-                            </path>
-                        </svg>
-                    </button>
+                    <input  id="text" required #termino formControlName="text"  class="col mx-1" style="border: none; outline:none;" aria-autocomplete="both" aria-labelledby="docsearch-label" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Buscar platos" maxlength="64" type="search"> 
                 </form>
-                <button class="btn btn-sm btn-morado" type="reset" aria-label="Cancel">Cancel</button>
+                <button class="btn btn-sm btn-morado" type="reset" data-bs-dismiss="modal" (click)="limpiar()" aria-label="Cancel">Cancel</button>
             </div>
         </div>
         <hr class="m-1">
         <div class="modal-body">
-            ...     
+            <div >
+                <app-plato class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4"  [items]="bus.receta"></app-plato>    
+            </div>
         </div>
     </div>
 </div>
