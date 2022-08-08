@@ -1,0 +1,12 @@
+#lupa:hover{
+    transition: all .5s;
+    color:  rgb(23, 11, 184)!important;
+}
+#lupa:focus{
+    transition: all .5s;
+    color:  rgb(23, 11, 184)!important;
+}
+#lupa:active{
+    transition: all .5s;
+    color:  rgb(23, 11, 184)!important;
+}
