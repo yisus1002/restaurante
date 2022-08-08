@@ -41,7 +41,7 @@
                             </g></g>
                         </svg>
                     </div>
-                    <input  required #termino keyup.enter formControlName="text"  class="col mx-1" style="border: none; outline:none;" aria-autocomplete="both" aria-labelledby="docsearch-label" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Buscar platos" maxlength="64" type="search"> 
+                    <input  required #termino (keyup)="bus.resultado=false; bus.receta=[]" formControlName="text"  class="col mx-1" style="border: none; outline:none;" aria-autocomplete="both" aria-labelledby="docsearch-label" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Buscar platos" maxlength="64" type="search"> 
                 </form>
                </div>
         </div>
@@ -49,7 +49,7 @@
         <div class="modal-body">
             <div >
                 <app-plato class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4"  [items]="bus.receta"></app-plato>
-                <div class="text-muted text-center h5 my-4">
+                <div *ngIf="bus.resultado===true" class="text-muted text-center h5 my-4">
                     No se encontrarón resultados para: {{termino.value}}
                 </div>
             </div>
