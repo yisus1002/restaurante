@@ -1,17 +1,17 @@
-<div class="col">
+<div class="col" *ngFor="let item of items ">
     <div class="card border-0 shadow">
         <div class="dropdown">
-            <button class="btn btn-sm border-0 position-absolute " data-bs-toggle="dropdown" aria-expanded="false">
-                <i  class="text-dark fas fa-ellipsis-v"></i>
+            <button class="btn btn-sm border-0 position-absolute " style="background-color: rgba(239, 239, 239, 0.257);" data-bs-toggle="dropdown" aria-expanded="false">
+                <i  class=" fas fa-ellipsis-v" style="color: red;"></i>
             </button>
             <ul class="dropdown-menu dropdown-menu-dark text-center"  aria-labelledby="dropdownMenuButton1"> 
               <li><button type="button" class="dropdown-item  border-0 btn-success"><i  class="fa text-info fa-eye   fa-beat"></i> Ver</button></li>
               <li><button type="button" class="dropdown-item  border-0 btn-danger" ><i  class="fa text-danger fa-trash fa-beat"></i> Eliminar</button></li>
             </ul>
         </div>
-        <img src="https://www.cocinacaserayfacil.net/wp-content/uploads/2020/04/Recetas-de-comidas-para-ni%C3%B1os.jpg" class="card-img-top" alt="...">
+        <img [src]="item.image" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title h6">{{item.title}}</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
     </div>
