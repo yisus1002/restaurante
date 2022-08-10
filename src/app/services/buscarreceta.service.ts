@@ -12,7 +12,7 @@ export class BuscarrecetaService {
   resultado:boolean=false;
   id:any[]=[];
   api:string='https://api.spoonacular.com/recipes/';
-  apykey:string='2ffb93eb9d1f4806ab91ae151b9a644d';
+  apykey:string='8a0b99c7da0c4d1dadfa51797ad3b73e';
 
   constructor(public http: HttpClient) {
     // this.obtener()
@@ -31,28 +31,36 @@ export class BuscarrecetaService {
     this.loading=true;
     this.getRecetas(termino)
     .pipe(finalize(()=>{
-      this.getInformationReceta(this.id.toString())
-      .pipe(finalize(()=>{
-        this.loading=false;
-      }))
-      .subscribe({
-        next: (data:any)=> {
-          this.receta=data;
-          console.log(data);
-          this.loading=false;
-          this.resultado=false;
-        },
-        error: (err)=>{
-          console.warn(err.error.message)
+      if(this.id.length>0){
+            this.getInformationReceta(this.id.toString())
+          .pipe(finalize(()=>{
+            this.loading=false;
+          }))
+          .subscribe({
+            next: (data:any)=> {
+              this.receta=data;
+              console.log(data);
+              this.loading=false;
+              this.resultado=false;
+            },
+            error: (err)=>{
+              console.warn(err.error.message)
+            }
+          })
+        }else{
+          this.loading=false
         }
-      })
-    }))
+        
+      }
+    ))
     .subscribe({
       next: (data:any)=>{
         if(data.results.length>=2){
        (data.results.forEach((element:any) => {this.id.push(element.id)}));
         }else if(data.results.length<=2){
           this.resultado=true;
+          this.receta=[]
+          this.id=[]
         }
       },
       error:(err)=> {
