@@ -1,18 +1,21 @@
-<div class="col" *ngFor="let item of items ">
+<div class="col">
   <div class="card border-0 shadow">
       <div class="dropdown">
           <button class="btn btn-sm border-0 position-absolute " style="background-color: rgba(239, 239, 239, 0.257);" data-bs-toggle="dropdown" aria-expanded="false">
               <i  class=" fas fa-ellipsis-v" style="color: red;"></i>
           </button>
           <ul class="dropdown-menu dropdown-menu-dark text-center"  aria-labelledby="dropdownMenuButton1"> 
-            <li><button type="button" class="dropdown-item  border-0 btn-success"><i  class="fa text-info fa-eye   fa-beat"></i> Ver</button></li>
-            <li><button type="button" class="dropdown-item  border-0 btn-danger" ><i  class="fa text-danger fa-trash fa-beat"></i> Eliminar</button></li>
+            <li><button type="button" class="dropdown-item  border-0 btn-success" data-bs-dismiss="modal" (click)="verPlato()"><i  class="fa text-info fa-eye   fa-beat"></i> Ver</button></li>
+            <li><button (click)="bus.agregar(items.id)" *ngIf="opcionAgregar" type="button" class="dropdown-item  border-0 btn-danger" ><i  class="fa text-success fa-plus"></i> Agregar</button></li>
+            <li><button (click)="eliminarPlato()" *ngIf="opcionEliminar" type="button" class="dropdown-item border-0  btn-danger" ><i  class="fa text-danger fa-trash fa-beat"></i> Eliminar</button></li>
           </ul>
       </div>
-      <img [src]="item.image" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title h6">{{item.title}}</h5>
-        <div class="card-text " [innerHTML]="item.summary" [id]="item.id"></div>
+      <img [src]="items.image" class="card-img-top" [alt]=" 'imagen de ' +items.title">
+      <div class="card-body" style=" position: relative;">
+        <h5 class="card-title h6">{{items.title}}</h5>
+        <div class="" style="position: absolute; bottom: 0; left: 0; height: 50px; width: 100%;  background-color: rgba(255, 255, 255, 0.36);"></div>
+        <div class="card-text " style="height: 300px; overflow:hidden;" [innerHTML]="items.summary" [id]="items.id">
+        </div>
       </div>
   </div>
 </div>
