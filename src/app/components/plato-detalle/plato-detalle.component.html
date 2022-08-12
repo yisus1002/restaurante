@@ -1,0 +1,18 @@
+<div class="col">
+    <div class="card border-0 shadow">
+        <div class="dropdown">
+            <button class="btn btn-sm border-0 position-absolute " style="background-color: rgba(239, 239, 239, 0.257);" data-bs-toggle="dropdown" aria-expanded="false">
+                <i  class=" fas fa-ellipsis-v" style="color: red;"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark text-center"  aria-labelledby="dropdownMenuButton1"> 
+              <li><button type="button" class="dropdown-item  border-0 btn-success"><i  class="fa text-info fa-eye   fa-beat"></i> Ver</button></li>
+              <li><button type="button" class="dropdown-item  border-0 btn-danger" ><i  class="fa text-danger fa-trash fa-beat"></i> Eliminar</button></li>
+            </ul>
+        </div>
+        <img [src]="plato.image" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title h6">{{plato.title}}</h5>
+          <div class="card-text " [innerHTML]="plato.summary" [id]="plato.id"></div>
+        </div>
+    </div>
+  </div>
