@@ -1,13 +1,13 @@
 <div class="container-fluid"> 
-    <div class="container bg-light shadow rounded-4 p-2 col-sm-12 col-md-10 col-xl-8 col-lg-7" >
+    <div class="container bg-light shadow rounded-4 p-2 col-sm-12 col-md-10 col-xl-10 col-lg-9" >
        <h1 class="h1 icono" >A la carta</h1>
        <h5 class="text-center text-muted">Menú</h5> 
        <button class="btn btn-sm m-1 rounded-circle btn-info"  data-bs-toggle="modal" data-bs-target="#exampleModal">
             <i class="fas fa-plus" style="color:rgba(255, 255, 255, 0.986);"></i>
        </button>
 
-       <div class="col">
-           <app-plato class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-2 g-1"  [items]="bus.menu"></app-plato>
+       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-2 g-1">
+           <app-plato  [items]="item" [index]="item.id" [ps]="i" *ngFor="let item of bus.menu; let i = index" ></app-plato>
        </div>
     </div>
 </div>
@@ -20,7 +20,7 @@
                 <h5>Agregar </h5>
                 <button type="button" class="btn-close border-0 " data-bs-dismiss="modal" (click)="limpiar()" aria-label="Close"></button>      
             </div>
-            <div class="  d-flex form-control col border rounded-pill border-0 shadow ">
+            <div class="  d-flex form-control col border rounded-pill border-1 form">
                 <form  class="DocSearch-Form d-flex col " [formGroup]="angForm" (ngSubmit)="buscar(termino.value)"  novalidate>
                     <button *ngIf="!bus.loading" type="submit" class="btn m-0 p-0 border-0 buscar" title="search">
                         <label class="DocSearch-MagnifierLabel buscar" style="cursor: pointer;" for="docsearch-input" id="docsearch-label">
@@ -41,14 +41,16 @@
                             </g></g>
                         </svg>
                     </div>
-                    <input  required #termino (keyup)="bus.resultado=false; bus.receta=[]" formControlName="text"  class="col mx-1" style="border: none; outline:none;" aria-autocomplete="both" aria-labelledby="docsearch-label" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Buscar platos" maxlength="64" type="search"> 
+                    <input  required #termino (keyup.enter)="bus.resultado=false; bus.receta=[]" formControlName="text"  class="col mx-1" style="border: none; outline:none;" aria-autocomplete="both" aria-labelledby="docsearch-label" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Buscar platos" maxlength="64" type="search"> 
                 </form>
                </div>
         </div>
         <hr class="m-1">
         <div class="modal-body">
             <div >
-                <app-plato class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4"  [items]="bus.receta"></app-plato>
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-1">
+                    <app-plato (platoseleccionado)="verPlato($event)" [items]="item" [index]="item.id" [opcionEliminar]="false" [opcionAgregar]="true" *ngFor="let item of bus.receta" ></app-plato>
+                </div>
                 <div *ngIf="bus.resultado===true" class="text-muted text-center h5 my-4">
                     No se encontrarón resultados para: {{termino.value}}
                 </div>

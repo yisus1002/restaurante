@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { BuscarrecetaService } from './../../services/buscarreceta.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -12,7 +13,8 @@ export class HomeComponent implements OnInit {
   // items:any= [];
   
   constructor(public bus:BuscarrecetaService,
-    private fb: FormBuilder) { 
+              private fb: FormBuilder,
+              private router:Router) { 
       this.crearform()
     } 
   ngOnInit(): void {
@@ -33,6 +35,11 @@ export class HomeComponent implements OnInit {
   limpiar(){
     this.angForm.reset();
     this.bus.receta=[]
+  }
+
+  verPlato(id:any){
+    this.router.navigate(['/plato-detalle',id])
+    console.log(id)
   }
 
 }
