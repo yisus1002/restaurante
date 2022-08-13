@@ -44,6 +44,10 @@
                     <input  required #termino (keyup.enter)="bus.resultado=false; bus.receta=[]" formControlName="text"  class="col mx-1" style="border: none; outline:none;" aria-autocomplete="both" aria-labelledby="docsearch-label" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Buscar platos" maxlength="64" type="search"> 
                 </form>
                </div>
+               <div class="container text-center">
+                <small *ngIf="bus.vegano>0 || bus.novegano>0" class="">Faltan {{bus.vegano}} platos <span class="text-success">veganos</span> y {{bus.novegano}} platos <span class="text-danger">no veganos</span> en el menú</small>
+                <small *ngIf="bus.vegano===0 && bus.novegano===0" class="">El menú esta lleno tiene 2 platos <span class="text-success">veganos</span> y 2 platos <span class="text-danger">no veganos</span></small>
+               </div>
         </div>
         <hr class="m-1">
         <div class="modal-body">
