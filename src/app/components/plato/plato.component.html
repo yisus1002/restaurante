@@ -21,7 +21,7 @@
           <p class="m-1 texto-1 p-2 d-flex  align-items-center" ><i class="h4 mx-1 text-success fas fa-dollar-sign"></i>Precio por ración ${{items.pricePerServing}}</p>
           <p class="m-1 texto-1 p-2 d-flex  align-items-center" ><i class="h4 mx-1 text-info fa fa-clock-o"></i>Preparación {{items.readyInMinutes}} minutos</p>
         </div>
-        <div class="container">
+        <div class="container" style="height: 300px ; overflow:hidden;">
           <h6 class="h6 text-center text-cafe">Ingredientes</h6>
           <ul class="list-group  list-group-flush ">
             <li *ngFor="let item of items.extendedIngredients" class="list-group-item m-0 p-0 texto-1">{{item.original}}</li>
