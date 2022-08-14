@@ -11,6 +11,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class HomeComponent implements OnInit {
   angForm!: FormGroup;
   // items:any= [];
+  precio:any=0;
+  healtScore:number=0;
+  tiempo:number=0;
   
   constructor(public bus:BuscarrecetaService,
               private fb: FormBuilder,
@@ -19,6 +22,14 @@ export class HomeComponent implements OnInit {
     } 
   ngOnInit(): void {
 
+  }
+  ngDoCheck(): void {
+    let pre = this.bus.menu.map(ele=>ele.pricePerServing);
+    let hs  = this.bus.menu.map(ele=>ele.healthScore);
+    let tm  = this.bus.menu.map(ele=>ele.readyInMinutes);
+    this.precio=pre.reduce((a,b)=>a+b,0);
+    this.healtScore=hs.reduce((a,b)=>a+b,0)/this.bus.menu.length;
+    this.tiempo=tm.reduce((a,b)=>a+b,0)/this.bus.menu.length;
   }
   buscar(termino:string){
     if(this.angForm.valid){

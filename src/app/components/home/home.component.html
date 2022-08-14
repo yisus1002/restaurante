@@ -2,10 +2,25 @@
     <div class="container bg-light shadow rounded-4 p-2 col-sm-12 col-md-10 col-xl-10 col-lg-9" >
        <h1 class="h1 icono" >A la carta</h1>
        <h5 class="text-center text-muted">Menú</h5> 
-       <button class="btn btn-sm m-1 rounded-circle btn-info"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+       <button *ngIf="bus.menu.length<4" class="btn btn-sm m-1 rounded-circle btn-info"  data-bs-toggle="modal" data-bs-target="#exampleModal">
             <i class="fas fa-plus" style="color:rgba(255, 255, 255, 0.986);"></i>
        </button>
-
+       <div class="container my-2">
+        <ul class="list-group texto-1 list-group-flush">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Precio acomulativo del menú
+              <span class="badge bg-success rounded-pill">{{precio | currency:'CAD':'symbol-narrow':'.0-3'}}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Promedio del puntaje de salud del menú
+              <span class="badge bg-danger rounded-pill">{{healtScore | 	number:'.0-3'}}</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center  border-bottom">
+              Promedio del tiempo de preparación del menú en minutos
+              <span class="badge bg-info rounded-pill">{{tiempo | 	number:'.0-3'}}</span>
+            </li>
+          </ul>
+       </div>
        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-2 g-1">
            <app-plato  [items]="item" [index]="item.id" [ps]="i" *ngFor="let item of bus.menu; let i = index" ></app-plato>
        </div>
