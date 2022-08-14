@@ -13,9 +13,23 @@
       <img [src]="items.image" class="card-img-top" [alt]=" 'imagen de ' +items.title">
       <div class="card-body" style=" position: relative;">
         <h5 class="card-title h6">{{items.title}}</h5>
-        <div class="" style="position: absolute; bottom: 0; left: 0; height: 50px; width: 100%;  background-color: rgba(255, 255, 255, 0.36);"></div>
-        <div class="card-text " style="height: 300px; overflow:hidden;" [innerHTML]="items.summary" [id]="items.id">
+        <div class="container  mt-3 d-flex flex-wrap justify-content-center">
+          <p *ngIf="items.vegan"    class=" m-1 texto-1 p-2 d-flex align-items-center" ><i class="h4 mx-2 text-success fas fa-leaf" ></i>Vegano </p>
+          <p *ngIf="!items.vegan"   class=" m-1 texto-1 p-2 d-flex align-items-center" ><i class="h4 mx-2 text-cafe fas fa-drumstick-bite" ></i>No vegano </p>
+          <p class="m-1 texto-1 p-2 d-flex  align-items-center" ><i class="h4 mx-1 text-primary fas fa-thumbs-up"></i>{{items.aggregateLikes}}</p>
+          <p class="m-1 texto-1 p-2 d-flex  align-items-center" ><i class="h4 mx-1 text-danger fas fa-heart" ></i>Puntaje de salud {{items.healthScore}}</p>
+          <p class="m-1 texto-1 p-2 d-flex  align-items-center" ><i class="h4 mx-1 text-success fas fa-dollar-sign"></i>Precio por ración ${{items.pricePerServing}}</p>
+          <p class="m-1 texto-1 p-2 d-flex  align-items-center" ><i class="h4 mx-1 text-info fa fa-clock-o"></i>Preparación {{items.readyInMinutes}} minutos</p>
         </div>
+        <div class="container">
+          <h6 class="h6 text-center text-cafe">Ingredientes</h6>
+          <ul class="list-group  list-group-flush ">
+            <li *ngFor="let item of items.extendedIngredients" class="list-group-item m-0 p-0 texto-1">{{item.original}}</li>
+          </ul>
+        </div>
+        <div class="" style="position: absolute; bottom: 0; left: 0; height: 50px; width: 100%;  background-color: rgba(255, 255, 255, 0.36);"></div>
+        <!-- <div class="card-text p-3 texto" style="height: 300px; overflow:hidden; text-align: justify;" [innerHTML]="items.summary | sanitizeHtml" [id]="items.id"> -->
+        <!-- </div> -->
       </div>
   </div>
 </div>
