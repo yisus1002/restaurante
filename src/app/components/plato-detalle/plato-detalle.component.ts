@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { finalize } from 'rxjs';
 import { BuscarrecetaService } from 'src/app/services/buscarreceta.service';
 
 @Component({
@@ -9,6 +10,8 @@ import { BuscarrecetaService } from 'src/app/services/buscarreceta.service';
 })
 export class PlatoDetalleComponent implements OnInit {
   plato:any={}
+  mostrar:boolean=false;
+  obj:boolean=false;
   constructor(private activateRoute:ActivatedRoute,
               private receta:BuscarrecetaService) { 
                 this.activateRoute.params.subscribe((params:any)=>{
@@ -16,6 +19,7 @@ export class PlatoDetalleComponent implements OnInit {
                   this.getPlato(params['id']);
                   console.log(this.plato)
                 })
+                
                }
 
   ngOnInit(): void {
@@ -23,8 +27,19 @@ export class PlatoDetalleComponent implements OnInit {
   }
   public getPlato(id:any){
     this.receta.getInformationReceta(id)
+    .pipe(finalize(()=>{
+      this.obj= Object.entries(this.plato).length === 0;
+    }))
     .subscribe({
-      next:(data:any)=>{this.plato=data[0]; console.log(this.plato)},
+      next:(data:any)=>{
+        if(data.length>0){   
+        this.plato=data[0]; 
+        this.mostrar=true;
+         console.log(data)
+        }else{
+          this.obj=true;
+        }
+      },
       error:(err:any)=>{  console.log(err.error.message) }
     })
   }
