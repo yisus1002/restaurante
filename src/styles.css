@@ -40,3 +40,31 @@
     box-shadow:1px 1px 6px 1px rgba(0, 212, 0, 0.86)!important;
 
 }
+.texto{
+    -webkit-text-size-adjust: 100%; 
+color: #666;
+font-style: normal;
+font-family: inherit;
+font-weight: normal;
+text-rendering: optimizeLegibility;
+font-size: 14px;
+/* text-align: justify; */
+line-height: 1.6;
+border: none;
+}
+.texto-1{
+    -webkit-text-size-adjust: 100%; 
+color: #666;
+font-style: normal;
+font-family: inherit;
+font-weight: normal;
+text-rendering: optimizeLegibility;
+font-size: 14px;
+/* text-align: justify; */
+line-height: 1.6;
+/* border: none; */
+
+}
+.text-cafe{
+    color: #84592d;
+}

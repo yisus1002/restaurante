@@ -23,6 +23,7 @@ import { PlatoComponent } from './components/plato/plato.component';
 import { AvatarComponent } from './components/avatar/avatar.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { PlatoDetalleComponent } from './components/plato-detalle/plato-detalle.component';
+import { SanitizeHtmlPipe } from './pipes/sanitize-html.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { PlatoDetalleComponent } from './components/plato-detalle/plato-detalle.
     NavbarComponent,
     PlatoComponent,
     AvatarComponent,
-    PlatoDetalleComponent, 
+    PlatoDetalleComponent,
+    SanitizeHtmlPipe, 
   ],
   imports: [
     BrowserModule,

@@ -1,18 +1,38 @@
-<div class="col">
-    <div class="card border-0 shadow">
-        <div class="dropdown">
-            <button class="btn btn-sm border-0 position-absolute " style="background-color: rgba(239, 239, 239, 0.257);" data-bs-toggle="dropdown" aria-expanded="false">
-                <i  class=" fas fa-ellipsis-v" style="color: red;"></i>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-dark text-center"  aria-labelledby="dropdownMenuButton1"> 
-              <li><button type="button" class="dropdown-item  border-0 btn-success"><i  class="fa text-info fa-eye   fa-beat"></i> Ver</button></li>
-              <li><button type="button" class="dropdown-item  border-0 btn-danger" ><i  class="fa text-danger fa-trash fa-beat"></i> Eliminar</button></li>
-            </ul>
-        </div>
-        <img [src]="plato.image" class="card-img-top" alt="...">
+<!-- <div class="col-12 col-md-11 texto" style="margin: 0 auto;"> -->
+  <!-- <div class="container texto"> -->
+    <div  class="card border-0 p-1 p-sm-2 p-md-4 shadow">
+      <h4 class="p-2 h4 text-center" style="color: rgb(34, 187, 34);">Detalles de la receta</h4>
         <div class="card-body">
-          <h5 class="card-title h6">{{plato.title}}</h5>
-          <div class="card-text " [innerHTML]="plato.summary" [id]="plato.id"></div>
+          <div class="d-flex flex-wrap">
+            <div class="col-12 d-flex flex-wrap justify-content-around">
+              <div class="col-12 col-md-5 mb-3">
+                <h5 class="card-title h5 text-center text-cafe">{{plato.title}}</h5>
+                <img [src]="plato.image" class="card-img-top  rounded-4 shadow-sm"  [alt]="plato.image">
+              </div>
+              <div class="col-12 col-md-5">
+                <h6 class="h6 text-center text-cafe">Ingredientes</h6>
+                <ul class="list-group  list-group-flush ">
+                  <li *ngFor="let item of plato.extendedIngredients" class="list-group-item m-0 p-0 texto-1">{{item.original}}</li>
+                </ul>
+              </div>
+            </div>
+            <div class="container mt-3 d-flex flex-wrap justify-content-center">
+              <p *ngIf="plato.vegan" class="m-1 texto-1 p-2 d-flex align-items-center" ><i class="h1 mx-2 text-success fas fa-leaf" ></i>Vegano </p>
+              <p *ngIf="!plato.vegan" class="m-1 texto-1 p-2 d-flex align-items-center" ><i class="h1 mx-2 text-cafe fas fa-drumstick-bite" ></i>No vegano </p>
+              <p class="m-1 texto-1 p-2 d-flex align-items-center" ><i class="h1 mx-2 text-danger fas fa-heart" ></i>Puntaje de salud {{plato.healthScore}}</p>
+              <p class="m-1 texto-1 p-2 d-flex align-items-center" ><i class="h1 mx-2 text-success fas fa-dollar-sign"></i>Precio por ración ${{plato.pricePerServing}}</p>
+              <p class="m-1 texto-1 p-2 d-flex align-items-center" ><i class="h1 mx-2 text-info fa fa-clock-o"></i>Preparación {{plato.readyInMinutes}} minutos</p>
+              <p class="m-1 texto-1 p-2 d-flex align-items-center" ><i class="h1 mx-2 text-primary fas fa-thumbs-up"></i>{{plato.aggregateLikes}}</p>
+            </div>
+            <div class="container mt-3 rounded-2 p-3" style="background-color: rgba(237, 237, 237, 0.137);">
+              <h6 class="h6 text-left text-cafe">Instrucciones</h6>
+              <p class="bagd"  [innerHTML]="plato.instructions | sanitizeHtml"></p>
+              <h6 class="h6 text-left text-cafe">Resumen</h6> 
+              <p class=""  [innerHTML]="plato.summary | sanitizeHtml" [id]="plato.id"></p>
+            </div>
+          </div>
         </div>
     </div>
-  </div>
+  <!-- </div>  -->
+<!-- </div> -->
+<p  class="alert alert-primary text-center ">No se encontrarón resultados para su busqueda</p>
