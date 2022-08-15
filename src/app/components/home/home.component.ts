@@ -14,7 +14,9 @@ export class HomeComponent implements OnInit {
   precio:any=0;
   healtScore:number=0;
   tiempo:number=0;
-  
+  p: number = 1;
+  total: number = 0;
+
   constructor(public bus:BuscarrecetaService,
               private fb: FormBuilder,
               private router:Router) { 
@@ -52,5 +54,8 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/plato-detalle',id])
     console.log(id)
   }
-
+  pageChangeEvent(event: number){
+    this.p = event;
+    this.total =this.bus.receta.length;
+  }
 }

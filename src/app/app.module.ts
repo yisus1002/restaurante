@@ -14,7 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from "@angular/forms"; // <---
 
-
+//Pagination module
+import { NgxPaginationModule } from 'ngx-pagination';
 
 //Importar rutas
 import { ROUTES } from './app.routes';
@@ -51,6 +52,7 @@ import { SanitizeHtmlPipe } from './pipes/sanitize-html.pipe';
         },
       },
     }),
+    NgxPaginationModule ,
   ],
   providers: [],
   bootstrap: [AppComponent]

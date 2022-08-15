@@ -15,7 +15,7 @@ export class BuscarrecetaService {
   vegano:any;
   novegano:any
   api:string='https://api.spoonacular.com/recipes/';
-  apykey:string='8a0b99c7da0c4d1dadfa51797ad3b73e';
+  apykey:string='2ffb93eb9d1f4806ab91ae151b9a644d';
 
 
   constructor(public http: HttpClient) {
@@ -24,12 +24,12 @@ export class BuscarrecetaService {
    }
 
   public getRecetas(termino:string, ){
-    const url =`${this.api}complexSearch?query=${termino}&apiKey=${this.apykey}`;
+    const url =`${this.api}complexSearch?query=${termino}&apiKey=${this.apykey}&number=100`;
     
     return this.http.get(url).pipe(map((data:any)=> data));
   };
   public getInformationReceta(ids:any){
-    const url = `${this.api}informationBulk?ids=${ids}&apiKey=${this.apykey}`
+    const url = `${this.api}informationBulk?ids=${ids}&apiKey=${this.apykey}&number=100`
     return this.http.get(url).pipe(map((data:any)=> data));
   };
   public getPlatoInformacion(id:any){
@@ -50,12 +50,12 @@ export class BuscarrecetaService {
           .subscribe({
             next: (data:any)=> {
               this.receta=data;
-              console.log(data);
+              //le.log(data);
               this.loading=false;
               this.resultado=false;
             },
             error: (err)=>{
-              console.warn(err.error.message)
+              //.warn(err.error.message)
             }
           })
         }else{
@@ -68,6 +68,7 @@ export class BuscarrecetaService {
       next: (data:any)=>{
         if(data.results.length>=2){
           this.id=[];
+          //.log(data);
        (data.results.forEach((element:any) => {this.id.push(element.id)}));
         }else if(data.results.length<=2){
           this.resultado=true;
@@ -78,7 +79,7 @@ export class BuscarrecetaService {
       error:(err)=> {
         this.loading=false;
         this.resultado=false;
-        console.warn(err.error.message)
+        //.warn(err.error.message)
       },
     })
   }
@@ -165,13 +166,13 @@ export class BuscarrecetaService {
   const data=(localStorage.getItem('data'))
     if(data){
   this.menu=JSON.parse(data!)
-    console.log(this.menu)
+    //.log(this.menu)
   }
   
 
   }
   eliminar(id:any){
-    console.log(id)
+    //.log(id)
     this.menu.splice(id,1)
     localStorage.setItem('data', JSON.stringify(this.menu))
     this.obtenermenu()

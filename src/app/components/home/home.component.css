@@ -16,3 +16,23 @@
 .list-group{
     --bs-list-group-bg: rgba(255, 255, 255, 0)!important;
 }
+::ng-deep .ngx-pagination {
+    padding-left: 0px !important;
+}
+::ng-deep  .ngx-pagination .current, .btn-info {
+    background: #17a2b8 !important;
+    border: transparent !important;
+    border-radius: 20px !important;
+}
+  
+::ng-deep .ngx-pagination .current:hover {
+    transition: all .5s;
+    background: #b812d2 !important;
+    border-radius: 20px !important; 
+    border: transparent !important;
+}
+::ng-deep .navigation >li{
+    transition: all .5s;
+    background: #b812d2 !important;
+    border-radius: 20px !important; 
+}

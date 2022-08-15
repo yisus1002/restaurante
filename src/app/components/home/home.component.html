@@ -30,9 +30,13 @@
     <div class="modal-dialog modal-fullscreen modal-dialog-scrollable">
       <div class="modal-content p-2">
         <div class="modal-header d-block py-1 my-0" style="border-bottom: 0;">
-            <div class="d-flex" >
-                <h5>Agregar </h5>
+            <div class="d-flex " >
+                <h5 class="">Agregar </h5>
                 <button type="button" class="btn-close border-0 " data-bs-dismiss="modal" (click)="limpiar()" aria-label="Close"></button>      
+            </div>
+            <div class="conatiner my-0 p-0 text-center">
+                <small class="" style="font-size: 12px; margin: 0 auto;" *ngIf="bus.vegano>0 || bus.novegano>0" >Faltan {{bus.vegano}} platos <span class="text-success">veganos</span> y {{bus.novegano}} platos <span class="text-danger">no veganos</span> en el menú</small>
+                <small class="" style="font-size: 12px; margin: 0 auto;" *ngIf="bus.vegano===0 && bus.novegano===0" >El menú esta lleno tiene 2 platos <span class="text-success">veganos</span> y 2 platos <span class="text-danger">no veganos</span></small>
             </div>
             <div class="  d-flex form-control col border rounded-pill border-1 form">
                 <form  class="DocSearch-Form d-flex col " [formGroup]="angForm" (ngSubmit)="buscar(termino.value)"  novalidate>
@@ -58,16 +62,20 @@
                     <input  required #termino (keyup.enter)="bus.resultado=false; bus.receta=[]" formControlName="text"  class="col mx-1" style="border: none; outline:none;" aria-autocomplete="both" aria-labelledby="docsearch-label" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Buscar platos" maxlength="64" type="search"> 
                 </form>
                </div>
-               <div class="container text-center">
-                <small *ngIf="bus.vegano>0 || bus.novegano>0" class="">Faltan {{bus.vegano}} platos <span class="text-success">veganos</span> y {{bus.novegano}} platos <span class="text-danger">no veganos</span> en el menú</small>
-                <small *ngIf="bus.vegano===0 && bus.novegano===0" class="">El menú esta lleno tiene 2 platos <span class="text-success">veganos</span> y 2 platos <span class="text-danger">no veganos</span></small>
-               </div>
+               <div class="d-flex pt-1 justify-content-center align-items-center text-center">
+                
+                <pagination-controls 
+                    (pageChange)="pageChangeEvent($event)"
+                    previousLabel=""
+                    nextLabel="">
+                </pagination-controls>
+            </div>
         </div>
-        <hr class="m-1">
+        <hr class="mx-1 mt-0 mb-1" >
         <div class="modal-body">
             <div >
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-1">
-                    <app-plato (platoseleccionado)="verPlato($event)" [items]="item" [index]="item.id" [opcionEliminar]="false" [opcionAgregar]="true" *ngFor="let item of bus.receta" ></app-plato>
+                    <app-plato (platoseleccionado)="verPlato($event)" [items]="item" [index]="item.id" [opcionEliminar]="false" [opcionAgregar]="true" *ngFor="let item of bus.receta | paginate: { itemsPerPage: 10, currentPage: p, totalItems: total }" ></app-plato>
                 </div>
                 <div *ngIf="bus.resultado===true" class="text-muted text-center h5 my-4">
                     No se encontrarón resultados para: {{termino.value}}
