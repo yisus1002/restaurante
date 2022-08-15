@@ -6,6 +6,9 @@
           <li class="nav-item">
             <a class="nav-link fuente " aria-current="page" routerLinkActive="active" [routerLink]="['home']">Home</a>
           </li>
+          <li *ngIf="currentRoute==='/plato-detalle/'" class="nav-item">
+            <a  class="nav-link fuente "  routerLinkActive="active" [routerLink]="[ruta]" >detail-plate</a>
+          </li>
         </ul>
       </div>
       <div class="d-flex">
@@ -30,6 +33,9 @@
       <ul class="list-group">
         <li class="list-group-item" routerLinkActive="active">
           <a class="nav-link fuente " aria-current="page"  [routerLink]="['home']">Home</a>
+        </li>
+        <li *ngIf="currentRoute==='/plato-detalle/'" routerLinkActive="active" class="list-group-item">
+          <a  class="nav-link fuente "   [routerLink]="[ruta]" >detail-plate</a>
         </li>
       </ul>
     </div>
