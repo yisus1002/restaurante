@@ -36,3 +36,8 @@
   <!-- </div>  -->
 <!-- </div> -->
 <p *ngIf="obj" class="alert alert-primary text-center fadeIn second">No se encontrarón resultados para su busqueda</p>
+<div *ngIf="loading" class="container-fluid m-0 p-0  d-flex justify-content-center position-absolute top-0 start-0 position-fixed align-items-center" style="height: 100%;  position: static; z-index: 999; background-color: rgba(33, 33, 33, 0.444);" >
+  <div class="spinner-border  text-primary h2" style="width: 80px; height: 80px;" role="status">
+    <span class="visually-hidden "  >Loading...</span>
+  </div>
+</div>
