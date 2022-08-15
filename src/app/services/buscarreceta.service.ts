@@ -55,7 +55,7 @@ export class BuscarrecetaService {
               this.resultado=false;
             },
             error: (err)=>{
-              //.warn(err.error.message)
+              console.warn(err.error.message)
             }
           })
         }else{
@@ -79,7 +79,7 @@ export class BuscarrecetaService {
       error:(err)=> {
         this.loading=false;
         this.resultado=false;
-        //.warn(err.error.message)
+        console.warn(err.error.message)
       },
     })
   }

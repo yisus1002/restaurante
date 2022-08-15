@@ -7,7 +7,7 @@
     <ul class="dropdown-menu text-center" style="min-width: 300px;" aria-labelledby="dropdownMenuButton1"> 
         <div  class="image bg border border-success " style="margin: 0 auto;" alt="usuario"></div>  
       <!-- <li><a class="dropdown-item" href="#">Pedidos</a></li> -->
-      <li><a class="dropdown-item" [routerLink]="['perfil']" >Perfil</a></li>
-      <li><a class="dropdown-item" (click)="auth.logOut()">Salir</a></li>
+      <li><button type="button" class="dropdown-item border border-0" (click)="router.navigate(['/perfil'])" >Perfil</button></li>
+      <li><button type="button" class="dropdown-item border border-0" (click)="auth.logOut()">Salir</button></li>
     </ul>
   </div>

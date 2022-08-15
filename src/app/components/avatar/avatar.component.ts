@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-avatar',
@@ -8,7 +9,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AvatarComponent implements OnInit {
 
-  constructor(public auth: AuthService) { }
+  constructor(public auth: AuthService,
+              public router:Router) { }
 
   ngOnInit(): void {
   }
